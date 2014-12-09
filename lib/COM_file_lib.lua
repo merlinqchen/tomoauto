@@ -297,7 +297,7 @@ local function write_beadtrack(input_filename, header)
    command_file:close()
 end
 
-local function write_tiltalign(input_filename, header)
+local function write_tiltalign(input_filename, header,  options_table)
    local basename = string.sub(input_filename, 1, -4)
    local command_filename = string.format('%s_tiltalign.com', basename)
    local command_file = assert(io.open(command_filename, 'w'))
@@ -389,8 +389,10 @@ local function write_tiltalign(input_filename, header)
       command_file:write(string.format('AxisZShift %4.2f\n\n',
          tiltalign_AxisZShift))
    end
+   local shiftzfromoriginal = options_table_szfo or '0'
    if tiltalign_ShiftZFromOriginal_use then
-      command_file:write(string.format('ShiftZFromOriginal \n\n'))
+      command_file:write(string.format('ShiftZFromOriginal %4.2f\n\n',
+      	shiftzfromoroginal))
    end
    if tiltalign_LocalAlignments_use then
       command_file:write(string.format('LocalAlignments\n\n'))
