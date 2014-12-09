@@ -392,7 +392,7 @@ local function write_tiltalign(input_filename, header,  options_table)
    local shiftzfromoriginal = options_table.o or '0'
    if tiltalign_ShiftZFromOriginal_use then
       command_file:write(string.format('ShiftZFromOriginal %4.2f\n\n',
-      	shiftzfromoroginal))
+      	shiftzfromoriginal))
    end
    if tiltalign_LocalAlignments_use then
       command_file:write(string.format('LocalAlignments\n\n'))
